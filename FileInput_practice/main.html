@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .line{border: solid 1px gray;}
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>PDF 뷰어</legend>
+        <input type="file" value=".pdf"><br><br>
+        <object data="files/keypoint.pdf" style="width:100%; height:500px"></object><br>
+        
+    </fieldset>
+
+    <fieldset>
+        <legend>사진</legend>
+        <input type="file" id="fileUpload" accept="image/*"><br>
+        <fieldset>
+            <legend>뷰어</legend>
+            <img id="previewImg" width="700" />
+            <script src="input_img.js"></script>
+        </fieldset>
+        <br>
+        
+        
+    </fieldset>
+
+    <fieldset>
+        <legend>노래</legend>
+        <object data="files/rhythm.mp3"></object><br>
+        <input type="file" value=".mp3">
+        
+    </fieldset>
+
+    <fieldset>
+        <legend>영상</legend>
+        <object data="files/mov_bbb.mp4"></object><br>
+        <input type="file" value=".mp3">
+    </fieldset>
+
+
+</body>
+</html>
