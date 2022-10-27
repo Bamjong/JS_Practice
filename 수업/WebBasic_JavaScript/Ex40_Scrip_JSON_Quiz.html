@@ -35,6 +35,9 @@
 
  
  */
+
+
+ 
 	var data = {
 		"FemailSafetyCustodyBox" : [
 				{
@@ -1674,75 +1677,112 @@
 
 
 
+	window.onload = function(){
+		
+		let flag = 0;
+		let abc = 0;
+       
+	   const addr_name = new Set;
+	   let addr = data.FemailSafetyCustodyBox[1].row;
+	   addr_name.add("선택하세요");
 
+	   for(let index in addr){
+		 addr_name.add(addr[index].SIGNGU_NM);
+	   }
+	
+		for(let index of addr_name){
+		let option = document.createElement("option");
+		option.setAttribute('value', index);
+		option.innerText = index;
+		
+		document.getElementById("sel").appendChild(option);
+		}
+	
+	document.getElementById("sel").addEventListener("change", function(){
+	   let cityList = document.getElementById("sel");
+	   let city = cityList.options[cityList.selectedIndex].value;
+	   
+	   console.log(city);
+	   
+	   let table = document.createElement("table");
+	   let thead = document.createElement('thead');
+	   let tbody = document.createElement('tbody');
+	   
+	   table.appendChild(thead);
+	   table.appendChild(tbody);
+	   
+	   var row1 = document.createElement('tr');
+	   var head1 = document.createElement('th');
+	   head1.innerHTML = "시설명";
+	   var head2 = document.createElement('th');
+	   head2.innerHTML = "소재지도로명주소";
+	   var head3 = document.createElement('th');
+	   head3.innerHTML = "칸 개수";
+	   var head4 = document.createElement('th');
+	   head4.innerHTML = "데이터기준일자";
+	   
+	   row1.appendChild(head1);
+	   row1.appendChild(head2);
+	   row1.appendChild(head3);
+	   row1.appendChild(head4);
+	   thead.appendChild(row1);
 
+	   
+	   for(let index in addr){
+		  var row2 = document.createElement('tr');
+		  
+		  if(addr[index].SIGNGU_NM == city){
+			 var data1 = document.createElement('td');
+			 data1.innerHTML = addr[index].FACLT_NM;
+			 var data2 = document.createElement('td');
+			 data2.innerHTML = addr[index].REFINE_ROADNM_ADDR;
+			 var data3 = document.createElement('td');
+			 data3.innerHTML = addr[index].CUSTODY_BOX_KIND_CD_INFO;
+			 var data4 = document.createElement('td');
+			 data4.innerHTML = addr[index].INSTL_DE
+			 
+			 row2.appendChild(data1);
+			 row2.appendChild(data2);
+			 row2.appendChild(data3);
+			 row2.appendChild(data4);
+			 tbody.appendChild(row2);
+		  }
+		  document.body.appendChild(table);
+		  
+	   }
+	   flag += 1;
+	   
+	   tableArray = document.getElementsByTagName('table')
+	//    console.log(tableArray);
+	//    console.log(flag);
 
+	   if (flag > 1) {
+		while (tableArray.length == flag) {
+			tableArray[abc].innerHTML = "";
+			abc ++;
+			console.log(abc);
+			break;
+		}
+		
+	   }
+	  
 
-
+	});
+	
+	// document.getElementById("sel").addEventListener("change", () =>{
+	// 	if (flag == 2) {
+			
+			
+	// }
+	// });
+	
+ }
 
 </script>
 </head>
 <body>
-	<select class="form-control" id="sel" name="sel" >
-	</select>
-	
+<select class="form-control" id="sel" name="sel">
+
+</select>
 </body>
-
-<script>
-	/*
-	시설명 / 소재지도로명주소 / 칸개수 / 데이터기준일자
-	의정부시 여성안심 택배보관함 / 경기도 의정부시 충의로 59 / 소형01 & 중형 뭐시기,, / 2019-04-01
-
-	FACLT_NM	/	REFINE_ROADNM_ADDR	/	CUSTODY_BOX_KIND_CD_INFO	/	DATA_STD_DE
-	*/
-
-	const addr_name = new Set;
-	let addr = data.FemailSafetyCustodyBox[1].row;
-	console.log(addr);
-	for (let index in addr) {
-		addr_name.add(addr[index].SIGNGU_NM);
-	}
-
-	for (let index of addr_name) {
-		let option = document.createElement("option");
-		option.value = index;
-		option.text = index;
-
-		document.getElementById("sel").appendChild(option);
-	}
-
-
-	for (let index of addr_name){
-		
-	}
-
-console.log(document.getElementById("sel")[0].value)
-console.log(addr[0].SIGUN_NM)
-
-let a = document.getElementById("sel")[0].value
-let b = addr[0].SIGUN_NM
-
-console.log(b == "의정부시")
-
-console.log(addr[0].SIGUN_NM == "의정부시")
-
-console.log(document.getElementById("sel").length)
-console.log(addr.length)
-
-console.log(addr[0].SIDO_NM == document.getElementById("sel")[0].value)
-
-// for(let index in document.getElementById("sel").length){
-// 	for (let j in addr.length){
-// 		let a = document.getElementById("sel")[0].value
-// 		let b = addr[j].SIGUN_NM
-
-// 		if (a == b) {
-// 			console.log(a == )
-// 		}
-// 	}
-// }
-	
-
-</script>
 </html>
-
